@@ -1,4 +1,4 @@
-package com.study.batch.dto;
+package com.study.batch.dto.relation;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

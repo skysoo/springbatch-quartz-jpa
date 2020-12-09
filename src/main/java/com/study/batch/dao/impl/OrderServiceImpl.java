@@ -2,7 +2,7 @@ package com.study.batch.dao.impl;
 
 import com.study.batch.dao.repository.OrderRepository;
 import com.study.batch.dao.service.OrderService;
-import com.study.batch.dto.OrderDTO;
+import com.study.batch.dto.relation.OrderDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

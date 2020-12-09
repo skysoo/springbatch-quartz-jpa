@@ -1,6 +1,6 @@
-package com.study.batch.dto;
+package com.study.batch.dto.relation;
 
-import com.study.batch.dto.type.StatusType;
+import com.study.batch.dto.relation.type.StatusType;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

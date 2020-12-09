@@ -1,6 +1,6 @@
 package com.study.batch.dao.service;
 
-import com.study.batch.dto.ItemDTO;
+import com.study.batch.dto.relation.ItemDTO;
 
 import java.util.List;
 import java.util.Optional;

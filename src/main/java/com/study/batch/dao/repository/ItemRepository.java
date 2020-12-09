@@ -1,6 +1,6 @@
 package com.study.batch.dao.repository;
 
-import com.study.batch.dto.ItemDTO;
+import com.study.batch.dto.relation.ItemDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

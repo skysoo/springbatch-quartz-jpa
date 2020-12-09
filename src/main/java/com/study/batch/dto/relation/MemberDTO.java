@@ -1,8 +1,7 @@
-package com.study.batch.dto;
+package com.study.batch.dto.relation;
 
-import com.study.batch.dto.type.RoleType;
+import com.study.batch.dto.relation.type.RoleType;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +12,7 @@ import java.util.Set;
 
 @Entity
 @Getter
-@EqualsAndHashCode
+//@EqualsAndHashCode
 @NoArgsConstructor(force = true)
 @SequenceGenerator(
         name = "`MEMBER_SEQ_GENERATOR`",
@@ -51,5 +50,16 @@ public class MemberDTO implements Serializable {
         this.zipCode = zipCode;
         this.roleType = roleType;
         this.orderDTOSet = orderDTOSet;
+
+    }
+
+    public String toString(){
+        return "=========================" +
+                "\nid:"+id +
+                "\nname:"+name +
+                "\ncity:"+city +
+                "\nstreet:"+street +
+                "\nzipCode:"+zipCode +
+                "\nroleType"+roleType;
     }
 }

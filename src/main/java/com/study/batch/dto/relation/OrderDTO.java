@@ -1,9 +1,6 @@
-package com.study.batch.dto;
+package com.study.batch.dto.relation;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -45,17 +42,13 @@ public class OrderDTO implements Serializable {
     @JoinColumn(name = "`DELIVERY_ID`")
     private DeliveryDTO deliveryDTO;
 
-    // 연관 관계 편의 메서드
-    public void setMemberDTO(MemberDTO memberDTO){
-        this.memberDTO = memberDTO;
-        memberDTO.getOrderDTOSet().add(this);
-    }
-
     @Builder
     public OrderDTO(long id, LocalDateTime orderDate, MemberDTO memberDTO, Set<OrderItemDTO> orderItemDTOSet, DeliveryDTO deliveryDTO) {
         this.id = id;
         this.orderDate = orderDate;
         this.memberDTO = memberDTO;
+        // 연관 관계 주인쪽 편의 메서드
+        memberDTO.getOrderDTOSet().add(this);
         this.orderItemDTOSet = orderItemDTOSet;
         this.deliveryDTO = deliveryDTO;
     }

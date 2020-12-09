@@ -1,6 +1,6 @@
 package com.study.batch.dao.repository;
 
-import com.study.batch.dto.MemberDTO;
+import com.study.batch.dto.relation.MemberDTO;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 

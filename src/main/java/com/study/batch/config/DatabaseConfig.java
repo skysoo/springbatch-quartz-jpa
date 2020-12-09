@@ -1,24 +1,18 @@
 package com.study.batch.config;
 
+import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.io.Closeable;
-import java.io.IOException;
+import javax.sql.DataSource;
 
 @Configuration
-public class DatabaseConfig implements Closeable {
-    private EntityManagerFactory entityManagerFactory;
-
+public class DatabaseConfig {
     @Bean
-    public EntityManagerFactory entityManagerFactory(){
-        return Persistence.createEntityManagerFactory("postgresql");
-    }
-
-    @Override
-    public void close() throws IOException {
-        entityManagerFactory.close();
+    @ConfigurationProperties("spring.datasource.hikari")
+    public DataSource dataSource(){
+        return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
 }

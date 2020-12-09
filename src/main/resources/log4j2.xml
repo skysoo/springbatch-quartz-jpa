@@ -113,7 +113,7 @@
 <!--            <AppenderRef ref="ErrorAppender" />-->
 <!--        </Logger>-->
 
-        <Root level="DEBUG">
+        <Root level="INFO">
             <AppenderRef ref="console" />
 <!--            <AppenderRef ref="FatalAppender" />-->
 <!--            <AppenderRef ref="DebugAppender" />-->

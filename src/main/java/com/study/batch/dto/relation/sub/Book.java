@@ -1,6 +1,6 @@
-package com.study.batch.dto.sub;
+package com.study.batch.dto.relation.sub;
 
-import com.study.batch.dto.ItemDTO;
+import com.study.batch.dto.relation.ItemDTO;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 

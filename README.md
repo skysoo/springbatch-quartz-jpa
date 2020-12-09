@@ -32,6 +32,48 @@ ITEM <-> ALBUM, MOVIE, BOOK 관계는 **싱글 테이블 전략으로 상속 관
 ## 2-2. 테이블 설계
 ![테이블 설계](./Img/table.png)
 
+> @ 엔티티 구조 및 이미지 자료는 김영한님의 인프런 강좌 내 일부 자료입니다.
+
+application.yml
+```
+# springboot
+server:
+  port: 8080
+  tomcat:
+    max-http-form-post-size: -1
+
+# SPRING
+spring:
+  datasource:
+    # 개선 커넥션 풀 db사용
+    hikari:
+      jdbc-url: jdbc:postgresql://<DB IP:PORT>/postgres
+      driver-class-name: org.postgresql.Driver
+      username: <DB USER>
+      password: <DB PW>
+      schema: PSS
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
+      use-new-id-generator-mappings: true
+    show-sql: true
+  batch:
+    job:
+      names: ${job.name:NONE}
+      enabled: off
+
+# 커스텀 설정
+common:
+  file-path: csvFile
+
+logging:
+  level:
+    org:
+      springframework: INFO
+```
 
 
 
