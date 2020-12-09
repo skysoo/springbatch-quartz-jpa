@@ -1,7 +1,7 @@
 package com.study.batch.dao.impl;
 
+import com.study.batch.dao.ServiceDao;
 import com.study.batch.dao.repository.OrderRepository;
-import com.study.batch.dao.service.OrderService;
 import com.study.batch.dto.relation.OrderDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class OrderServiceImpl implements OrderService {
+public class OrderDaoImpl implements ServiceDao<OrderDTO> {
     private final OrderRepository orderRepository;
 
     @Override

@@ -1,7 +1,7 @@
 package com.study.batch.dao.impl;
 
+import com.study.batch.dao.ServiceDao;
 import com.study.batch.dao.repository.MemberRepository;
-import com.study.batch.dao.service.MemberService;
 import com.study.batch.dto.relation.MemberDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class MemberServiceImpl implements MemberService {
+public class MemberDaoImpl implements ServiceDao<MemberDTO> {
     private final MemberRepository memberRepository;
 
     @Override
