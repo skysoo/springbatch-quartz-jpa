@@ -1,7 +1,6 @@
 package com.study.batch.jpa;
 
-import com.study.batch.dao.service.MemberService;
-import com.study.batch.dao.service.OrderService;
+import com.study.batch.dao.ServiceDao;
 import com.study.batch.dto.relation.MemberDTO;
 import com.study.batch.dto.relation.OrderDTO;
 import com.study.batch.dto.relation.type.RoleType;
@@ -22,9 +21,9 @@ import java.util.List;
 public class JpaTest {
 
     @Autowired
-    private MemberService memberService;
+    private ServiceDao<MemberDTO> memberDao;
     @Autowired
-    private OrderService orderService;
+    private ServiceDao<OrderDTO>  orderDao;
     @Autowired
     private EntityManagerFactory entityManagerFactory;
 
@@ -34,7 +33,7 @@ public class JpaTest {
     @Test
     public void jpaBasicTest(){
         //when
-        List<MemberDTO> memberServiceAll = memberService.findAll();
+        List<MemberDTO> memberServiceAll = memberDao.findAll();
         memberServiceAll.forEach(memberDTO -> System.out.println(memberDTO.toString()));
 
 //        EntityManager em = entityManagerFactory.createEntityManager();
@@ -69,7 +68,7 @@ public class JpaTest {
                 .orderDTOSet(new HashSet<>())
                 .build();
         //then
-        memberService.save(member);
+        memberDao.save(member);
 
         //given
         OrderDTO order = OrderDTO.builder()
@@ -77,7 +76,14 @@ public class JpaTest {
                 .orderDate(LocalDateTime.now())
                 .build();
         //then
-        orderService.save(order);
+        orderDao.save(order);
     }
 
+    @Test
+    public void customDaoTest(){
+        List<MemberDTO> all = memberDao.findAll();
+        for (MemberDTO memberDTO : all) {
+            System.out.println(memberDTO.toString());
+        }
+    }
 }
