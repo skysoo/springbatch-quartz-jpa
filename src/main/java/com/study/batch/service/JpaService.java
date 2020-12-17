@@ -1,7 +1,6 @@
 package com.study.batch.service;
 
-import com.study.batch.dao.service.MemberService;
-import com.study.batch.dao.service.OrderService;
+import com.study.batch.dao.ServiceDao;
 import com.study.batch.dto.relation.MemberDTO;
 import com.study.batch.dto.relation.OrderDTO;
 import com.study.batch.dto.relation.type.RoleType;
@@ -14,9 +13,9 @@ import java.util.HashSet;
 @Service
 public class JpaService {
     @Autowired
-    private MemberService memberService;
+    private ServiceDao<MemberDTO> memberDao;
     @Autowired
-    private OrderService orderService;
+    private ServiceDao<OrderDTO>  orderDao;
 
     public void insert() {
         MemberDTO member = MemberDTO.builder()
@@ -27,12 +26,12 @@ public class JpaService {
                 .roleType(RoleType.VIP)
                 .orderDTOSet(new HashSet<>())
                 .build();
-        memberService.save(member);
+        memberDao.save(member);
 
         OrderDTO order = OrderDTO.builder()
                 .memberDTO(member) // 연관 관계 편의 메서드를 사용하면 양방향 관계 모두 값 설정 가능 - 개발시 이점
                 .orderDate(LocalDateTime.now())
                 .build();
-        orderService.save(order);
+        orderDao.save(order);
     }
 }

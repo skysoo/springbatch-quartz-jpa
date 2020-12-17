@@ -38,7 +38,7 @@ public class CustomListItemWriterJobConfiguration {
 
     @Bean
     public Step customListItemWriterStep() {
-        return stepBuilderFactory.get("customItemWriterStep")
+        return stepBuilderFactory.get("customListItemWriterJob")
                 .<Pay, List<Pay2>>chunk(chunkSize)
                 .reader(customListItemWriterReader())
                 .processor(customItemListWriterProcessor())

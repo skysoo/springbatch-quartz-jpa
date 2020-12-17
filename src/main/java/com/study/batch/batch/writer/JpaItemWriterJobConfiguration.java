@@ -16,11 +16,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.persistence.EntityManagerFactory;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Log4j2
 @RequiredArgsConstructor
 @Configuration
 public class JpaItemWriterJobConfiguration {
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
     private final EntityManagerFactory entityManagerFactory;
@@ -36,6 +39,7 @@ public class JpaItemWriterJobConfiguration {
 
     @Bean
     public Step jpaItemWriterStep() {
+
         return stepBuilderFactory.get("jpaItemWriterStep")
                 .<Pay, Pay2>chunk(chunkSize)
                 .reader(jpaItemWriterReader())
@@ -59,7 +63,7 @@ public class JpaItemWriterJobConfiguration {
         return pay -> Pay2.builder()
                 .amount(pay.getAmount() +2000)
                 .txName(pay.getTxName() +"_CLONE")
-                .txDateTime(pay.getTxDateTime())
+                .txDateTime(LocalDateTime.now().format(FORMATTER))
                 .build();
     }
 
