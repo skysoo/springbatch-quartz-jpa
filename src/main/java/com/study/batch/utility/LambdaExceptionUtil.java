@@ -31,9 +31,6 @@ public class LambdaExceptionUtil {
         };
     }
 
-    /**
-     * Return 값이 있는 Lambda Exception 처리 핸들러
-     **/
     public <T, E extends Exception> Consumer<T> handlingConsumerWrapper(
             ThrowingConsumer<T, E> throwingConsumer, Class<E> exceptionClass) {
 
@@ -51,6 +48,10 @@ public class LambdaExceptionUtil {
             }
         };
     }
+
+    /**
+     * Return 값이 있는 Lambda Exception 처리 핸들러
+     **/
     public <T, R, E extends Exception> Function<T, R> throwingApplyWrapper(FunctionWithException<T, R, E> fe) {
         return arg -> {
             try {
