@@ -6,8 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
-@EnableBatchProcessing
-@EnableScheduling
 @SpringBootApplication
 public class BatchApplication {
 
